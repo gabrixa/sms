@@ -342,3 +342,19 @@ document.addEventListener("DOMContentLoaded", () => {
   })();
 
 }); // fim do DOMContentLoaded
+
+
+
+/* SLIDESHOW AUTOMÁTICO - BIOGRAFIA DOS SÓCIOS */
+document.querySelectorAll('.bio-slideshow').forEach(slideshow => {
+  const slides = slideshow.querySelectorAll('.bio-slide');
+  let index = 0;
+
+  setInterval(() => {
+    slides[index].classList.remove('active');
+
+    index = (index + 1) % slides.length;
+
+    slides[index].classList.add('active');
+  }, 4500);
+});
