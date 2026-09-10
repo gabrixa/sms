@@ -2,20 +2,19 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sentenças deferidas - SMS</title>
   <style>
-
-
     body {
-  font-family: Arial, sans-serif;
-  background: 
-    linear-gradient(rgba(249, 249, 249, 0.0), rgba(249, 249, 249, 0.0)),
-    url('logo site todo.jpg') no-repeat center center fixed;
-  background-size: cover;
-  margin: 0;
-  padding: 0;
-  color: #5b5950;
-}
+      font-family: Arial, sans-serif;
+      background: 
+        linear-gradient(rgba(249, 249, 249, 0.0), rgba(249, 249, 249, 0.0)),
+        url('logo site todo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      color: #5b5950;
+    }
 
     .casos {
       max-width: 1000px;
@@ -91,7 +90,7 @@
     }
 
     .descricao-caso.aberto {
-      max-height: 500px; /* valor alto para permitir expansão */
+      max-height: 500px;
       opacity: 1;
     }
 
@@ -123,7 +122,7 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
-    /* Botão flutuante (menu bolinha) */
+    /* Botão flutuante */
     .menu-fab {
       position: fixed;
       bottom: 30px;
@@ -181,6 +180,60 @@
     .fab-open .fab-menu {
       display: flex;
     }
+
+    /* ==========================
+       RESPONSIVIDADE CELULAR
+       ========================== */
+    @media (max-width: 600px) {
+      body {
+        background-attachment: scroll;
+        background-size: cover;
+      }
+
+      .casos, .podcasts {
+        margin: 20px auto;
+        padding: 0 12px;
+      }
+
+      .casos h2,
+      .podcasts h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+      }
+
+      #filtroCasos {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+
+      .caso {
+        padding: 15px;
+      }
+
+      .caso h3 {
+        font-size: 18px;
+      }
+
+      .descricao-caso {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .episodio h4 {
+        font-size: 16px;
+      }
+
+      .fab-button {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+      }
+
+      .fab-menu a {
+        padding: 8px 14px;
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 
@@ -195,7 +248,7 @@
     </div>
   </div>
 
-  <!-- Casos Nossos -->
+  <!-- Casos -->
   <section class="casos">
     <h2>Sentenças deferidas</h2>
 
@@ -253,12 +306,10 @@
   </section>
 
   <script>
-    // Toggle menu fab
     function toggleFab() {
       document.getElementById("fab").classList.toggle("fab-open");
     }
 
-    // Toggle descrição dos casos (colapsar/expandir + destaque)
     function toggleDescricao(element) {
       const todosCasos = document.querySelectorAll('.caso');
       todosCasos.forEach(caso => {
@@ -281,7 +332,6 @@
       }
     }
 
-    // Permitir toggle com Enter ou Espaço no teclado
     function keyToggleDescricao(event, element) {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
@@ -289,7 +339,6 @@
       }
     }
 
-    // Filtro de busca para sentenças
     const filtroInput = document.getElementById('filtroCasos');
     filtroInput.addEventListener('input', () => {
       const termo = filtroInput.value.toLowerCase();
